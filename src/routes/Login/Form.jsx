@@ -1,14 +1,17 @@
 import { Form as FormikForm, Field, ErrorMessage } from "formik";
 import { FIELDS } from "./constants";
 
+
+
 const Form = () => {
   return (
     <FormikForm>
       <div className="min-w-screen min-h-screen bg-green-500 flex flex-col justify-center items-center">
+      
         <h2 className="text-2xl font-semibold mb-5">LOGIN</h2>
-        <div className="bg-white w-full max-w-[400px] p-10 px-16 flex flex-col gap-4 rounded-lg">
+        <div className="bg-white w-full max-w-[400px] p-10 px-15 flex flex-col gap-4 rounded-lg">
           {FIELDS.map((item) => (
-            <div className="w-full flex flex-col gap-1">
+            <div key={item.name} className="w-full flex flex-col gap-1">
               <label htmlFor={item.name}>{item.label}</label>
               <Field
                 type={item.type}

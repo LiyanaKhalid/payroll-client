@@ -17,5 +17,5 @@ export const FIELDS = [
 
 export const SCHEMA = yup.object({
   username:yup.string().required('username is required'),
-  password:yup.string().required('password is required').min(6,'password should have atleast 6 characters')
+  password:yup.string().required('password is required').min(5,'password should have atleast 5 characters')
 })
