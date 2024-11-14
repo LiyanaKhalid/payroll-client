@@ -1,14 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+/* eslint-disable react/prop-types */
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./routes/Login";
 import Home from "./routes/Home";
-import { useContext } from "react";
-import { AuthContext } from "./contexts/AuthContext";
 
-const Router = () => {
-  const { user } = useContext(AuthContext);
-
-  console.log(user)
-  if (user) {
+const Router = ({ isAuthenticated }) => {
+  if (isAuthenticated) {
     return (
       <BrowserRouter>
         <Routes>
@@ -21,7 +18,8 @@ const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Navigate to="/login" replace={true} />} />
       </Routes>
     </BrowserRouter>
   );

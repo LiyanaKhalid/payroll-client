@@ -1,14 +1,9 @@
-
-import { AuthProvider } from "./contexts/AuthContext";
 import Router from "./Router";
 
-
 function App() {
-  return (
-    <AuthProvider>
-     <Router/> 
-    </AuthProvider>
-  );
+  const isAuthenticated = !!localStorage.getItem("access-token");
+
+  return <Router isAuthenticated={isAuthenticated} />;
 }
 
 export default App;
