@@ -1,5 +1,4 @@
-import * as yup from 'yup';
-
+import * as yup from "yup";
 
 export const FIELDS = [
   {
@@ -14,8 +13,10 @@ export const FIELDS = [
   },
 ];
 
-
 export const SCHEMA = yup.object({
-  username:yup.string().required('username is required'),
-  password:yup.string().required('password is required').min(5,'password should have atleast 5 characters')
-})
+  username: yup.string().required("username is required"),
+  password: yup
+    .string()
+    .required("password is required")
+    .min(5, "password should have atleast 5 characters"),
+});
