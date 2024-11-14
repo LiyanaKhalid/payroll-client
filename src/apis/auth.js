@@ -1,14 +1,9 @@
 import axiosInstance from "../configs/axios";
 
-const BASE_URL = "/sessions";
+const BASE_URL = "/auth";
 
-const createSession = (payload) => axiosInstance.post(BASE_URL, payload);
+const generateToken = (payload) =>
+  axiosInstance.post(`${BASE_URL}/generate`, payload);
 
-const getSession = () => axiosInstance.get(BASE_URL);
-
-const authApi = {
-  createSession,
-  getSession,
-};
-
+const authApi = { generateToken };
 export default authApi;
