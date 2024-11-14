@@ -3,6 +3,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./routes/Login";
 import Home from "./routes/Home";
+import Company from "./routes/Company";
 
 const Router = ({ isAuthenticated }) => {
   if (isAuthenticated) {
@@ -10,6 +11,7 @@ const Router = ({ isAuthenticated }) => {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/:companyId" element={<Company />} />
         </Routes>
       </BrowserRouter>
     );
