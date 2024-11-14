@@ -2,14 +2,18 @@ import { Formik } from "formik";
 import Form from "./Form";
 import { FIELDS, SCHEMA } from "./constants";
 import authApi from "../../apis/auth";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
 
 const Login = () => {
-  const { setUser } = useContext(AuthContext);
-  
-  const onFormSubmit = (values) => {
-    authApi.createSession(values).then((response) => setUser(response.data));
+  const onFormSubmit = async (values) => {
+    try {
+      const { data } = await authApi.generateToken(values);
+      if (!data.accessToken || !data.refreshToken) return;
+      localStorage.setItem("access-token", data.accessToken);
+      localStorage.setItem("refresh-token", data.refreshToken);
+      window.location.href = "/";
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
