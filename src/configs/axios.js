@@ -33,7 +33,7 @@ axiosInstance.interceptors.response.use(
       } catch (_refreshError) {
         localStorage.removeItem("access-token");
         localStorage.removeItem("refresh-token");
-        // window.location.href = "/login";
+        window.location.href = "/login";
       }
     }
     return Promise.reject(error);
