@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Form from "./Form";
 import { FIELDS, SCHEMA } from "./constants";
 
-const Company = () => {
+const New = () => {
   const { companyId } = useParams();
 
   const onFormSubmit = (values) => {
@@ -28,4 +28,4 @@ const Company = () => {
   );
 };
 
-export default Company;
+export default New;

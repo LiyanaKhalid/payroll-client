@@ -1,5 +1,7 @@
 import * as yup from "yup";
 
+const contractCategories = ["cleaning", "manpower"];
+
 export const FIELDS = [
   {
     name: "name",
@@ -27,14 +29,15 @@ export const FIELDS = [
     label: "Contact No.",
   },
   {
-    name: "contact_value",
+    name: "contract_value",
     type: "text",
-    label: "Contact Value",
+    label: "Contract Value",
   },
   {
     name: "contract_category",
-    type: "text",
+    type: "select",
     label: "Contract Category",
+    options: contractCategories,
   },
   {
     name: "contract_duration",
@@ -72,8 +75,11 @@ export const SCHEMA = yup.object({
   gst: yup.string().required("GST is required"),
   tan: yup.string().required("TAN is required"),
   contact_number: yup.string().required("contact number is required"),
-  contact_value: yup.string().required("contact value is required"),
-  contract_category: yup.string().required("contract category is required"),
+  contract_value: yup.string().required("contract value is required"),
+  contract_category: yup
+    .string()
+    .oneOf(contractCategories, "Invalid category")
+    .required("contract category is required"),
   contract_duration: yup.string().required("contract duration is required"),
   days: yup.string().required("days is required"),
   epbg_amount: yup.string().required("EPBG amount is required"),
