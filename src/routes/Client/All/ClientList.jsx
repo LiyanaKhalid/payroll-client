@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 const ActionButton = ({ label }) => (
   <button className="px-2 py-0.5 rounded border border-green-500 hover:bg-green-500 hover:text-white duration-150">
     {label}
@@ -22,9 +24,12 @@ const ClientList = ({ clients }) => {
           key={item.id}
           className="flex justify-between items-center py-2.5 gap-5"
         >
-          <div className="text-black cursor-pointer hover:scale-105">
+          <Link
+            to={item.id}
+            className="text-black cursor-pointer hover:scale-105"
+          >
             {item.name}
-          </div>
+          </Link>
           <div className="flex-none flex gap-2 text-sm text-green-500">
             <ActionButton label="View Staff" />
             <ActionButton label="Add Staff" />
