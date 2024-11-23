@@ -9,5 +9,8 @@ const fetchOne = (id) => axiosInstance.get(`${BASE_URL}/${id}`);
 
 const createOne = (payload) => axiosInstance.post(BASE_URL, payload);
 
-const clientsApi = { fetchAll, fetchOne, createOne };
+const updateOne = (id, payload) =>
+  axiosInstance.put(`${BASE_URL}/${id}`, payload);
+
+const clientsApi = { fetchAll, fetchOne, createOne, updateOne };
 export default clientsApi;
