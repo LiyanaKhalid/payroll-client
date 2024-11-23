@@ -18,10 +18,13 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response?.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
+    if (error.response?.status === 401) {
+      const refreshToken = localStorage.getItem("refresh-token");
+      if (!refreshToken) window.location.href = "/login";
+      localStorage.removeItem("access-token");
+      localStorage.removeItem("refresh-token");
+
       try {
-        const refreshToken = localStorage.getItem("refresh-token");
         const { data } = await axiosInstance.post("/auth/refresh", {
           refreshToken,
         });
