@@ -81,7 +81,7 @@ export const SCHEMA = yup.object({
     .oneOf(contractCategories, "Invalid category")
     .required("contract category is required"),
   contract_duration: yup.string().required("contract duration is required"),
-  days: yup.string().required("days is required"),
+  days: yup.number().required("days is required"),
   epbg_amount: yup.string().required("EPBG amount is required"),
   epbg_expiry_date: yup.string().required("EPBG expiry date is required"),
   epbg_date: yup.string().required("EPBG date is required"),
