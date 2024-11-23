@@ -11,6 +11,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const fetchData = async () => {
+    setIsLoading(true);
     try {
       const { data } = await companiesApi.fetchAll();
       setCompanies(data.companies);
@@ -21,8 +22,9 @@ const Home = () => {
     }
   };
 
-  const onCompanySelect = (companyId) => {
-    navigate(`/${companyId}`);
+  const onCompanySelect = (company) => {
+    localStorage.setItem("selected-company", JSON.stringify(company));
+    navigate(`/${company.id}`);
   };
 
   useEffect(() => {

@@ -8,7 +8,7 @@ const CompanyList = ({ companies, onSelect }) => (
       <div
         key={item.id}
         className="flex flex-col items-center gap-2 group hover:scale-105 duration-150"
-        onClick={() => onSelect(item.id)}
+        onClick={() => onSelect(item)}
       >
         <div className="w-40 h-40 overflow-hidden rounded-lg">
           <img src={item.logo_url ?? PLACEHOLDER_URL} />
