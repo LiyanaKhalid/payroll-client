@@ -31,7 +31,7 @@ const New = () => {
   const onFormSubmit = async (values) => {
     try {
       const payload = { ...values, company_id: companyId };
-      const { data } = client?.id
+      const { data } = !client
         ? await clientsApi.createOne(payload)
         : await clientsApi.updateOne(client.id, payload);
       if (data.error) throw new Error(data.error);
