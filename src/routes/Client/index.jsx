@@ -7,6 +7,7 @@ const Client = () => {
     <Routes>
       <Route path="" element={<All />} />
       <Route path="new" element={<New />} />
+      <Route path=":clientId" element={<New />} />
     </Routes>
   );
 };
