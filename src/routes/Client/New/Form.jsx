@@ -7,6 +7,7 @@ const SelectInput = ({ data }) => (
   <Field
     as="select"
     name={data.name}
+    id={data.name}
     className="border px-2.5 py-1.5 rounded-md"
   >
     <option value="" label="Select an option" />
@@ -22,6 +23,7 @@ const TextInput = ({ data }) => (
   <Field
     type={data.type}
     name={data.name}
+    id={data.name}
     className="border px-2.5 py-1.5 rounded-md"
   />
 );
