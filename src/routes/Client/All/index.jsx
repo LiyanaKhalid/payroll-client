@@ -25,7 +25,24 @@ const All = () => {
   };
 
   const onAddClient = () => {
-    navigate(`new`);
+    navigate("new");
+  };
+
+  const onDeleteClient = async (clientId) => {
+    try {
+      await clientsApi.deleteOne(clientId);
+      fetchData();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const onViewEmployees = (clientId) => {
+    navigate(`${clientId}/employees`);
+  };
+
+  const onAddEmployee = (clientId) => {
+    navigate(`${clientId}/employees/new`);
   };
 
   useEffect(() => {
@@ -42,7 +59,12 @@ const All = () => {
       <main className="flex-1 bg-green-500 flex justify-center items-center p-5">
         <div className="w-full max-w-3xl">
           <h2 className="text-2xl font-semibold mb-5">Client list</h2>
-          <ClientList clients={clients} />
+          <ClientList
+            clients={clients}
+            onDeleteClient={onDeleteClient}
+            onViewEmployees={onViewEmployees}
+            onAddEmployee={onAddEmployee}
+          />
         </div>
       </main>
     </div>
