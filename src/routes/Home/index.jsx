@@ -24,7 +24,7 @@ const Home = () => {
 
   const onCompanySelect = (company) => {
     localStorage.setItem("selected-company", JSON.stringify(company));
-    navigate(`/${company.id}`);
+    navigate(`/${company.id}/clients`);
   };
 
   useEffect(() => {

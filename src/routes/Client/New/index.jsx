@@ -35,7 +35,7 @@ const New = () => {
         ? await clientsApi.createOne(payload)
         : await clientsApi.updateOne(client.id, payload);
       if (data.error) throw new Error(data.error);
-      navigate(`/${companyId}`);
+      navigate(`/${companyId}/clients`);
     } catch (err) {
       console.error(err);
     }
