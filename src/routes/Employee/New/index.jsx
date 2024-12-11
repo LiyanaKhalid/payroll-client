@@ -5,6 +5,7 @@ import employeesApi from "../../../apis/employees";
 import PageLoader from "../../../components/PageLoader";
 import Form from "./Form";
 import { FIELDS, SCHEMA } from "./constants";
+import Error from "../../../components/Error";
 
 const New = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -59,9 +60,15 @@ const New = () => {
     return <PageLoader />;
   }
 
+  if (employeeId && !employee) {
+    return <Error title="Could not load employee" />;
+  }
+
   return (
     <>
-      <h2 className="text-2xl font-semibold mb-5">Add Employee Details</h2>
+      <h2 className="text-2xl font-semibold mb-5">
+        {employee ? "Update" : "Add"} Employee Details
+      </h2>
       <Formik
         initialValues={getInitialFormValues()}
         validationSchema={SCHEMA}

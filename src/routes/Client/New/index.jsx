@@ -3,6 +3,7 @@ import { Formik } from "formik";
 import { useNavigate, useParams } from "react-router-dom";
 import clientsApi from "../../../apis/clients";
 import PageLoader from "../../../components/PageLoader";
+import Error from "../../../components/Error";
 import Form from "./Form";
 import { FIELDS, SCHEMA } from "./constants";
 
@@ -59,9 +60,15 @@ const New = () => {
     return <PageLoader />;
   }
 
+  if (clientId && !client) {
+    return <Error title="Could not load client" />;
+  }
+
   return (
     <>
-      <h2 className="text-2xl font-semibold mb-5">Add Client Details</h2>
+      <h2 className="text-2xl font-semibold mb-5">
+        {client ? "Update" : "Add"} Client Details
+      </h2>
       <Formik
         initialValues={getInitialFormValues()}
         validationSchema={SCHEMA}
