@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import companiesApi from "../apis/companies";
 
-const Sidebar = ({ actions }) => {
+const Sidebar = ({ mainLinks, bottomLinks }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [company, setCompany] = useState();
 
@@ -47,18 +47,43 @@ const Sidebar = ({ actions }) => {
   }
 
   return (
-    <aside className="flex-none min-w-60 flex flex-col">
-      <div className="flex-1 flex flex-col gap-3 p-7 overflow-y-auto">
-        {actions.map((item, idx) => (
-          <button
-            key={`action-${idx}`}
-            onClick={item.callback}
-            className="bg-green-500 px-2 py-1.5 rounded-full duration-150 hover:scale-105 hover:bg-green-600"
-          >
-            {item.label}
-          </button>
-        ))}
-      </div>
+    <aside className="flex-none min-w-60 flex flex-col border-r">
+      <h3 className="px-5 py-3 font-semibold text-2xl bg-gray-100">
+        {company.name}
+      </h3>
+      <Link
+        to="/"
+        className="flex justify-between px-5 py-1.5 text-sm bg-gray-200 hover:bg-gray-300 border-black border-t border-b"
+      >
+        <span>Switch company</span>
+        <span>&gt;</span>
+      </Link>
+      {mainLinks && (
+        <div className="flex-1 flex flex-col gap-2 p-3 overflow-y-auto">
+          {mainLinks.map((item, idx) => (
+            <Link
+              key={`action-${idx}`}
+              to={item.route}
+              className="bg-transparent px-3 py-1.5 rounded duration-150 hover:bg-green-500 hover:text-white"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
+      {bottomLinks && (
+        <div className="flex flex-col gap-2 p-3 overflow-y-auto border-t">
+          {bottomLinks.map((item, idx) => (
+            <Link
+              key={`action-${idx}`}
+              to={item.route}
+              className="bg-transparent px-3 py-1.5 rounded duration-150 hover:bg-gray-200"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </aside>
   );
 };

@@ -19,7 +19,7 @@ const Form = () => {
 
   return (
     <FormikForm>
-      <div className="bg-white p-10 px-15 rounded-lg space-y-7">
+      <div className="w-[740px] bg-white p-10 px-15 rounded-lg space-y-7">
         <div className="grid grid-cols-[300px_300px] gap-x-7 gap-y-4">
           {FIELDS.map((item) => {
             const InputFieldComponent = inputTypeMap[item.type] || null;

@@ -60,7 +60,7 @@ const New = () => {
   }
 
   return (
-    <div className="min-w-screen min-h-screen bg-green-500 flex flex-col justify-center items-center p-10">
+    <>
       <h2 className="text-2xl font-semibold mb-5">Add Employee Details</h2>
       <Formik
         initialValues={getInitialFormValues()}
@@ -69,7 +69,7 @@ const New = () => {
       >
         {() => <Form />}
       </Formik>
-    </div>
+    </>
   );
 };
 
