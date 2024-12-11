@@ -2,6 +2,7 @@ import { Route, Routes, useParams } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import All from "./All";
 import New from "./New";
+import Attendance from "./Attendance";
 
 const Employee = () => {
   const { companyId } = useParams();
@@ -9,6 +10,7 @@ const Employee = () => {
   const MAIN_LINKS = [
     { label: "All Employees", route: "" },
     { label: "New Employee", route: "new" },
+    { label: "Attendance", route: "attendance" },
   ];
 
   const BOTTOM_LINKS = [
@@ -21,6 +23,7 @@ const Employee = () => {
       <main className="flex-1 bg-green-500 p-10 overflow-auto">
         <Routes>
           <Route path="" element={<All />} />
+          <Route path="attendance" element={<Attendance />} />
           <Route path="new" element={<New />} />
           <Route path=":employeeId" element={<New />} />
         </Routes>
