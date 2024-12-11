@@ -24,33 +24,40 @@ const ClientList = ({
   }
 
   return (
-    <ul className="list-none px-5 py-3 bg-white rounded divide-y">
-      {clients.map((item) => (
-        <li
-          key={item.id}
-          className="flex justify-between items-center py-2.5 gap-5"
-        >
-          <h3 className="text-black">{item.name}</h3>
-          <div className="flex-none flex gap-2 text-sm">
-            <ActionButton
-              label="View Staff"
-              color="green"
-              onClick={() => onViewEmployees(item.id)}
-            />
-            <ActionButton
-              label="Edit"
-              color="green"
-              onClick={() => onEditClient(item.id)}
-            />
-            <ActionButton
-              label="Delete"
-              color="red"
-              onClick={() => onDeleteClient(item.id)}
-            />
-          </div>
-        </li>
-      ))}
-    </ul>
+    <table className="bg-white w-full rounded overflow-hidden">
+      <thead className="border-b font-semibold bg-gray-100">
+        <tr>
+          <td className="px-3 py-1.5">Name</td>
+          <td className="px-3 py-1.5 w-80">Actions</td>
+        </tr>
+      </thead>
+      <tbody className="divide-y">
+        {clients.map((item) => (
+          <tr key={item.id}>
+            <td className="px-3 py-2">{item.name}</td>
+            <td className="px-3 py-1">
+              <div className="flex flex-wrap gap-1 text-sm">
+                <ActionButton
+                  label="Staff Management"
+                  color="green"
+                  onClick={() => onViewEmployees(item.id)}
+                />
+                <ActionButton
+                  label="Edit"
+                  color="green"
+                  onClick={() => onEditClient(item.id)}
+                />
+                <ActionButton
+                  label="Delete"
+                  color="red"
+                  onClick={() => onDeleteClient(item.id)}
+                />
+              </div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
