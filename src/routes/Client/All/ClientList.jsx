@@ -9,12 +9,7 @@ const ActionButton = ({ label, color, onClick }) => (
   </button>
 );
 
-const ClientList = ({
-  clients,
-  onViewEmployees,
-  onEditClient,
-  onDeleteClient,
-}) => {
+const ClientList = ({ clients, onEditClient, onViewEmployees }) => {
   if (!clients?.length) {
     return (
       <div className="min-h-32 flex justify-center items-center bg-white rounded text-gray-400">
@@ -34,23 +29,20 @@ const ClientList = ({
       <tbody className="divide-y">
         {clients.map((item) => (
           <tr key={item.id}>
-            <td className="px-3 py-2">{item.name}</td>
+            <td className="px-3 py-2">
+              <span
+                onClick={() => onEditClient(item.id)}
+                className="cursor-pointer hover:text-green-500"
+              >
+                {item.name}
+              </span>
+            </td>
             <td className="px-3 py-1">
               <div className="flex flex-wrap gap-1 text-sm">
                 <ActionButton
-                  label="Staff Management"
+                  label="Staff"
                   color="green"
                   onClick={() => onViewEmployees(item.id)}
-                />
-                <ActionButton
-                  label="Edit"
-                  color="green"
-                  onClick={() => onEditClient(item.id)}
-                />
-                <ActionButton
-                  label="Delete"
-                  color="red"
-                  onClick={() => onDeleteClient(item.id)}
                 />
               </div>
             </td>

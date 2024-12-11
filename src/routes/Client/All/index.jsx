@@ -23,21 +23,12 @@ const All = () => {
     }
   };
 
-  const onViewEmployees = (clientId) => {
-    navigate(`${clientId}/employees`);
-  };
-
   const onEditClient = (clientId) => {
     navigate(`${clientId}`);
   };
 
-  const onDeleteClient = async (clientId) => {
-    try {
-      await clientsApi.deleteOne(clientId);
-      fetchData();
-    } catch (err) {
-      console.error(err);
-    }
+  const onViewEmployees = (clientId) => {
+    navigate(`${clientId}/employees`);
   };
 
   useEffect(() => {
@@ -53,9 +44,8 @@ const All = () => {
       <h2 className="text-2xl font-semibold mb-5">Client list</h2>
       <ClientList
         clients={clients}
-        onViewEmployees={onViewEmployees}
         onEditClient={onEditClient}
-        onDeleteClient={onDeleteClient}
+        onViewEmployees={onViewEmployees}
       />
     </>
   );
